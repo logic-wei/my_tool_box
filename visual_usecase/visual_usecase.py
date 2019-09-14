@@ -250,8 +250,11 @@ def main():
             if os.path.exists(usecase.name):
                 shutil.rmtree(usecase.name)
             os.mkdir(usecase.name)
-            for pipeline in usecase.pipelines:
-                print("Pipeline: " + pipeline.name)
+            for index, pipeline in enumerate(usecase.pipelines):
+                prefix = "├── "
+                if index == len(usecase.pipelines)-1:
+                    prefix = "└── "
+                print(prefix + "Pipeline: " + pipeline.name)
                 renderPipeline(pipeline, "./" + usecase.name + "/")
     print("Done.")
 
