@@ -1,6 +1,11 @@
 # visual_usecase
 A powerful tool for parsing qcom camera usecases xml file.
 
+## Dependency
+```bash
+pip3 install graphviz
+```
+
 ## Usage
 ```bash
 usage: visual_usecase.py [-h] [-v] [-u USECASE] file path
