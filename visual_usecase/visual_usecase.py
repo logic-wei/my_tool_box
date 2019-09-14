@@ -208,6 +208,7 @@ attr_node = {
 def renderPipeline(pipeline, path):
     graph = gv.Digraph()
     graph.attr(label=pipeline.name, **attr_pipeline_graph)
+
     for node in pipeline.nodes:
         if node.equal(pipeline.linkages.srcNode):
             # src node
@@ -215,9 +216,11 @@ def renderPipeline(pipeline, path):
         else:
             # normal node
             graph.node(node.graphNodeId(), label=node.graphNodeLabel(), **attr_node)
+
     for link in pipeline.linkages.links:
         # link
         graph.edge(link.srcPort.node.graphNodeId(), link.dstPort.node.graphNodeId(), link.graphEdgeLabel())
+
     graph.render(path + pipeline.name)
 
 
