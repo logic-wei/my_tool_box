@@ -27,7 +27,7 @@ optional arguments:
 If there was a file test_usecases.xml,run the command below:
 
 ```python
-python3 visual_usecase usecases.xml ./out
+python3 visual_usecase.py usecases.xml ./out
 ```
 
 Then you can get some outputs below in out:
