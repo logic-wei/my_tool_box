@@ -4,6 +4,7 @@ import graphviz as gv
 import argparse as ap
 import os
 import shutil
+import time
 
 
 # config
@@ -221,7 +222,7 @@ def renderPipeline(pipeline, path):
         # link
         graph.edge(link.srcPort.node.graphNodeId(), link.dstPort.node.graphNodeId(), link.graphEdgeLabel())
 
-    graph.render(path + pipeline.name)
+    graph.render(path + pipeline.name, cleanup=True)
 
 
 def main():
@@ -244,6 +245,7 @@ def main():
     usecases = parse("./" + args.file)
     os.chdir(args.path)
 
+    time_begin = time.time()
     for usecase in usecases:
         if args.usecase is None or usecase.name == args.usecase:
             print("Rendering for usecase: %s..." % usecase.name)
@@ -256,7 +258,8 @@ def main():
                     prefix = "└── "
                 print(prefix + "Pipeline: " + pipeline.name)
                 renderPipeline(pipeline, "./" + usecase.name + "/")
-    print("Done.")
+            print("")
+    print("Done. (%s seconds)" % str(str(time.time() - time_begin)))
 
 
 if __name__ == "__main__":
