@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--========================================================================-->
-<!-- Copyright (c) 2016-2017 Qualcomm Technologies, Inc.                    -->
-<!-- All Rights Reserved.                                                   -->
-<!-- Confidential and Proprietary - Qualcomm Technologies, Inc.             -->
-<!--========================================================================-->
-<UsecaseDef
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="../../../cdk/topology/topology.xsd">
+<UsecaseDef>
 
   <module_version>
     <major_revision>1</major_revision>
     <minor_revision>1</minor_revision>
     <incr_revision>0</incr_revision>
   </module_version>
-
-
 
   <Usecase>
     <UsecaseName>UsecasePreview</UsecaseName>
@@ -109,7 +100,5 @@
       </PortLinkages>
     </Pipeline>
   </Usecase>
-
-
 
 </UsecaseDef>
