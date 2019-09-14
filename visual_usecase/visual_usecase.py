@@ -74,15 +74,18 @@ def parse(xmlfile):
     tree = et.parse(xmlfile)
     root = tree.getroot()
     usecases = []
+
     if root.tag == "UsecaseDef":
         elem_UsecaseDef = root
         # --------------------UsecaseDef--------------------
+
         for child in elem_UsecaseDef:
             if child.tag == "Usecase":
                 elem_Usecase = child
                 # --------------------Usecase--------------------
                 cur_usecase = Usecase()
                 usecases.append(cur_usecase)
+
                 for child2 in elem_Usecase:
                     if child2.tag == "UsecaseName":
                         elem_UsecaseName = child2
@@ -93,6 +96,7 @@ def parse(xmlfile):
                         # --------------------Pipeline--------------------
                         cur_pipeline = Pipeline()
                         cur_usecase.pipelines.append(cur_pipeline)
+
                         for child3 in elem_Pipeline:
                             if child3.tag == "PipelineName":
                                 elem_PipelineName = child3
@@ -101,12 +105,14 @@ def parse(xmlfile):
                             elif child3.tag == "NodesList":
                                 elem_NodesList = child3
                                 # --------------------NodesList--------------------
+
                                 for child4 in elem_NodesList:
                                     if child4.tag == "Node":
                                         elem_Node = child4
                                         # --------------------Node--------------------
                                         cur_node = Node()
                                         cur_pipeline.nodes.append(cur_node)
+
                                         for child5 in elem_Node:
                                             if child5.tag == "NodeName":
                                                 cur_node.name = child5.text
@@ -121,6 +127,7 @@ def parse(xmlfile):
                                 # --------------------PortLinkages--------------------
                                 cur_linkages = Linkages()
                                 cur_pipeline.linkages = cur_linkages
+
                                 for child4 in elem_PortLinkages:
                                     if child4.tag == "SourceNode":
                                         elem_SourceNode = child4
@@ -135,12 +142,14 @@ def parse(xmlfile):
                                         # --------------------Link--------------------
                                         cur_link = Link()
                                         cur_linkages.links.append(cur_link)
+
                                         for child5 in elem_Link:
                                             if child5.tag == "SrcPort":
                                                 elem_SrcPort = child5
                                                 # --------------------SrcPort--------------------
                                                 cur_srcPort = Port()
                                                 cur_link.srcPort = cur_srcPort
+
                                                 for child6 in elem_SrcPort:
                                                     if child6.tag == "PortName":
                                                         cur_srcPort.name = child6.text
@@ -159,6 +168,7 @@ def parse(xmlfile):
                                                 # --------------------DstPort--------------------
                                                 cur_dstPort = Port()
                                                 cur_link.dstPort = cur_dstPort
+
                                                 for child6 in elem_DstPort:
                                                     if child6.tag == "PortName":
                                                         cur_dstPort.name = child6.text
