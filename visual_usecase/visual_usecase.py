@@ -44,12 +44,12 @@ class Port:
 class Link:
     def __init__(self):
         self.srcPort = None
-        self.dstPort = None
+        self.dstPorts = []
 
-    def graphEdgeLabel(self):
+    def graphEdgeLabel(self, dstIndex):
         return r"src=%s (%s)\ndst=%s (%s)" % \
                (self.srcPort.id, self.srcPort.name,
-                self.dstPort.id, self.dstPort.name)
+                self.dstPorts[dstIndex].id, self.dstPorts[dstIndex].name)
 
 
 class Linkages:
@@ -168,7 +168,7 @@ def parse(xmlfile):
                                                 elem_DstPort = child5
                                                 # --------------------DstPort--------------------
                                                 cur_dstPort = Port()
-                                                cur_link.dstPort = cur_dstPort
+                                                cur_link.dstPorts.append(cur_dstPort)
 
                                                 for child6 in elem_DstPort:
                                                     if child6.tag == "PortName":
@@ -220,7 +220,8 @@ def renderPipeline(pipeline, path):
 
     for link in pipeline.linkages.links:
         # link
-        graph.edge(link.srcPort.node.graphNodeId(), link.dstPort.node.graphNodeId(), link.graphEdgeLabel())
+        for index, dstPort in enumerate(link.dstPorts):
+            graph.edge(link.srcPort.node.graphNodeId(), dstPort.node.graphNodeId(), link.graphEdgeLabel(index))
 
     graph.render(path + pipeline.name, cleanup=True)
 
