@@ -19,7 +19,7 @@ class Node:
         self.instance = instance
         self.instanceId = instanceId
 
-    def equal(self, other):
+    def equals(self, other):
         if self.name == other.name and self.instance == other.instance:
             return True
         else:
@@ -211,7 +211,7 @@ def renderPipeline(pipeline, path):
     graph.attr(label=pipeline.name, **attr_pipeline_graph)
 
     for node in pipeline.nodes:
-        if node.equal(pipeline.linkages.srcNode):
+        if node.equals(pipeline.linkages.srcNode):
             # src node
             graph.node(node.graphNodeId(), label=node.graphNodeLabel(), **attr_srcnode)
         else:
