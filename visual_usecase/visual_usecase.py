@@ -8,7 +8,7 @@ import time
 
 
 # config
-VERSION = "v1.0.2019.9.14"
+VERSION = "v1.0.2019.9.18"
 AUTHOR = "logic-wei"
 
 
