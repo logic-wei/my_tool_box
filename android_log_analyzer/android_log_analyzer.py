@@ -322,10 +322,9 @@ def main():
     argparser.add_argument("path",
                            help="Specify the root path of files to process.")
     argparser.add_argument("-o", "--output",
-                           default="./log-analysis-result.html",
                            help="Where and what to generate.")
     argparser.add_argument("-t", "--type",
-                           choices=("normal", "bsptestreport"),
+                           choices=("normal", "bsptest"),
                            default="normal",
                            help="Specify what kind of log it is.")
     argparser.add_argument("-f", "--filter",
@@ -342,12 +341,16 @@ def main():
         if suffix:
             output_suffix = suffix
 
+    output_path = args.output
+    if not output_path:
+        output_path = "./log-analysis-result_" + os.path.split(args.path)[1] + ".html"
+
     if output_suffix == "html":
-        log_files = LogFile.get_log_file_list(args.path, args.type == "bsptestreport", args.filter)
-        generate_html(log_files, args.output)
+        log_files = LogFile.get_log_file_list(args.path, args.type == "bsptest", args.filter)
+        generate_html(log_files, output_path)
     elif output_suffix == "xls":
-        log_files = LogFile.get_log_file_list(args.path, args.type == "bsptestreport", args.filter)
-        generate_xls(log_files, args.output)
+        log_files = LogFile.get_log_file_list(args.path, args.type == "bsptest", args.filter)
+        generate_xls(log_files, output_path)
     else:
         print("Can't support this format.")
         exit(0)
