@@ -9,7 +9,7 @@ from string import Template
 
 # Configs
 CONFIG_AUTHOR = "logic-wei"
-CONFIG_VERSION = "v1.1.2019.11.4"
+CONFIG_VERSION = "v1.2.2019.11.4"
 
 
 class LogFile:
@@ -41,6 +41,7 @@ class LogFile:
                 if filter_pattern and not re.match(filter_pattern, file):
                     continue
                 log_files.append(LogFile(file, file_path))
+        log_files.sort(key=lambda e: e.name)
 
         return log_files
 
