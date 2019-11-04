@@ -1,9 +1,15 @@
-# -*-coding:utf-8-*-
+#!/usr/bin/python3
 import xlwt
 import os
 import re
 import abc
+import argparse as ap
 from string import Template
+
+
+# Configs
+CONFIG_AUTHOR = "logic-wei"
+CONFIG_VERSION = "v1.1.2019.11.4"
 
 
 class LogFile:
@@ -32,9 +38,8 @@ class LogFile:
             file_path = os.path.join(logs_root_path, file)
 
             if os.path.isfile(file_path):
-                if filter_pattern:
-                    if not re.match(filter_pattern, file):
-                        continue
+                if filter_pattern and not re.match(filter_pattern, file):
+                    continue
                 log_files.append(LogFile(file, file_path))
 
         return log_files
@@ -289,8 +294,8 @@ $asaninfo
         return template_row.substitute(color=color, title=title, backtrace=backtrace, asaninfo=asaninfo)
 
 
-def generate_html(log_files):
-    result_file = HtmlContainer()
+def generate_html(log_files, output_path):
+    result_file = HtmlContainer(output_path)
     result_file.begin_add()
     for file in log_files:
         print("Parsing: " + file.name)
@@ -300,8 +305,8 @@ def generate_html(log_files):
     print("Html has been generated: " + result_file.filename)
 
 
-def generate_xls(log_files):
-    result_file = ExcelContainer()
+def generate_xls(log_files, output_path):
+    result_file = ExcelContainer(output_path)
     for file in log_files:
         print("Parsing: " + file.name)
         file.set_result_container(result_file)
@@ -310,5 +315,42 @@ def generate_xls(log_files):
     print("Xls has been generated: " + result_file.filename)
 
 
-log_files = LogFile.get_log_file_list("/Users/logic/Downloads/Ultra_U21030ASAN/BSPTESTREPORT/BSPLog")
-generate_html(log_files)
+def main():
+    argparser = ap.ArgumentParser()
+
+    argparser.add_argument("path",
+                           help="Specify the root path of files to process.")
+    argparser.add_argument("-o", "--output",
+                           default="./log-analysis-result.html",
+                           help="Where and what to generate.")
+    argparser.add_argument("-t", "--type",
+                           choices=("normal", "bsptestreport"),
+                           default="normal",
+                           help="Specify what kind of log it is.")
+    argparser.add_argument("-f", "--filter",
+                           help="Only the files which name match the regular expression can be analyze.")
+    argparser.add_argument("-v", "--version",
+                           action="version",
+                           version="Version: " + CONFIG_VERSION + " Written by " + CONFIG_AUTHOR)
+
+    args = argparser.parse_args()
+
+    output_suffix = "html"
+    if args.output:
+        suffix = os.path.splitext(args.output)[-1][1:]
+        if suffix:
+            output_suffix = suffix
+
+    if output_suffix == "html":
+        log_files = LogFile.get_log_file_list(args.path, args.type == "bsptestreport", args.filter)
+        generate_html(log_files, args.output)
+    elif output_suffix == "xls":
+        log_files = LogFile.get_log_file_list(args.path, args.type == "bsptestreport", args.filter)
+        generate_xls(log_files, args.output)
+    else:
+        print("Can't support this format.")
+        exit(0)
+
+
+if __name__ == '__main__':
+    main()
