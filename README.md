@@ -1,4 +1,4 @@
-# my_tool_box
+# My Tool Box
 Collection of different kinds of my tools.
 
 ## Tools list
