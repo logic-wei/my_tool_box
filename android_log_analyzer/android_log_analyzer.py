@@ -84,6 +84,7 @@ class LogFile:
     def parse_asaninfo(self):
         result = None
         str_header = "AddressSanitizer"
+        str_warning = "WARNING"
         pattern_process_name = re.compile(r".*android\.hardware\.camera\.provider@\d+\.\d+-service.*")
         pattern_ending = re.compile(r".*ABORTING.*")
 
@@ -91,7 +92,9 @@ class LogFile:
             in_asaninfo = False
             for line in log:
                 if not in_asaninfo:
-                    if str_header in line:
+                    if not pattern_process_name.match(line):
+                        continue;
+                    if str_header in line and str_warning not in line:
                         in_asaninfo = True
                         result = line
                 else:
