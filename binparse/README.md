@@ -1,6 +1,6 @@
 # binparse
 
-Usefull tools help you analyze binary file.
+Highly customizable tools help you analyze binary file.
 
 ## Quick start
 
