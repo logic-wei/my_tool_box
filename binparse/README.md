@@ -11,7 +11,7 @@ For example elf file.
 As we known the elf header looks like:
 
 ```c
-typedef struct{
+typedef struct {
 　　unsigned char e_ident[EI_NIDENT];
 　　Elf32_Half e_type;
 　　Elf32_Half e_machine;
@@ -26,7 +26,7 @@ typedef struct{
 　　Elf32_Half e_shentsize;
 　　Elf32_Half e_shnum;
 　　Elf32_Half e_shstrndx;
-　　}Elf32_Ehdr;
+}Elf32_Ehdr;
 ```
 
 You can create a file named `Elf32_Ehdr.json` to descibe it:
