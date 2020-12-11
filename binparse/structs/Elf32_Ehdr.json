@@ -1,0 +1,61 @@
+{
+    "name": "Elf32_Ehdr",
+    "fields": [
+        {
+            "name": "e_ident",
+            "size": 16
+        },
+        {
+            "name": "e_type",
+            "size": 4
+        },
+        {
+            "name": "e_machine",
+            "size": 4
+        },
+        {
+            "name": "e_version",
+            "size": 4
+        },
+        {
+            "name": "e_entry",
+            "size": 4
+        },
+        {
+            "name": "e_phoff",
+            "size": 4
+        },
+        {
+            "name": "e_shoff",
+            "size": 4
+        },
+        {
+            "name": "e_flags",
+            "size": 4
+        },
+        {
+            "name": "e_ehsize",
+            "size": 4
+        },
+        {
+            "name": "e_phentsize",
+            "size": 4
+        },
+        {
+            "name": "e_phnum",
+            "size": 4
+        },
+        {
+            "name": "e_shentsize",
+            "size": 4
+        },
+        {
+            "name": "e_shnum",
+            "size": 4
+        },
+        {
+            "name": "e_shstrndx",
+            "size": 4
+        }
+    ]
+}
