@@ -33,7 +33,6 @@ def parse(binpath, offset, structpath):
                 print(prefix + hex(pos) + " " + hex(offset_in_struct) + ": " + name + " " + data.hex() + " " + bytes2readable(data))
                 pos += size
                 offset_in_struct += size
-                offset_in_struct += size
                 i += 1
 
 
