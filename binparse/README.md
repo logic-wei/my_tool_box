@@ -6,7 +6,30 @@ Highly customizable tools help you analyze binary file.
 
 If you got a binary file,you can create a file to describe a range of bytes in file.And then the `binparse` can show you human readable infomation rather than the fucking bytes.
 
-For example elf file,you can create a file named `Elf32_Ehdr.json` to describe the elf header of this file.
+For example elf file.
+
+As we known the elf header looks like:
+
+```c
+typedef struct{
+　　unsigned char e_ident[EI_NIDENT];
+　　Elf32_Half e_type;
+　　Elf32_Half e_machine;
+　　Elf32_Word e_version;
+　　Elf32_Addr e_entry;
+　　Elf32_Off e_phoff;
+　　Elf32_Off e_shoff;
+　　Elf32_Word e_flags;
+　　Elf32_Half e_ehsize;
+　　Elf32_Half e_phentsize;
+　　Elf32_Half e_phnum;
+　　Elf32_Half e_shentsize;
+　　Elf32_Half e_shnum;
+　　Elf32_Half e_shstrndx;
+　　}Elf32_Ehdr;
+```
+
+You can create a file named `Elf32_Ehdr.json` to descibe it:
 
 Elf32_Ehdr.json:
 
@@ -75,7 +98,7 @@ Elf32_Ehdr.json:
 
 ```
 
-And then parse the file test.o at offset 0:
+And then parse the elf file test.o at offset 0:
 
 ```bash
 binparse.py -o 0 -s structs/Elf32_Ehdr.json test.o
