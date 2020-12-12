@@ -2,6 +2,7 @@
 import argparse as ap
 import json
 import struct
+import re
 
 
 def bytes2readable(bytes):
@@ -87,7 +88,7 @@ def main():
                            help="binary file to parse.")
     argparser.add_argument("-o", "--offset",
                            default=0,
-                           help="struct offset in file.")
+                           help="struct offset in file(hex or dec).")
     argparser.add_argument("-s", "--struct",
                            required=True,
                            help="specify a json file describe the struct.")
@@ -97,7 +98,13 @@ def main():
                            help="specify endian to decode.")
 
     args = argparser.parse_args()
-    parse(args.path, int(args.offset), args.struct, args.endian)
+
+    if re.match("^0x.*$", args.offset):
+        offset = int(args.offset, 16)
+    else:
+        offset = int(args.offset, 10)
+
+    parse(args.path, offset, args.struct, args.endian)
 
 
 main()
