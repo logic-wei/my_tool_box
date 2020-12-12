@@ -23,11 +23,13 @@
         },
         {
             "name": "e_phoff",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         },
         {
             "name": "e_shoff",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         },
         {
             "name": "e_flags",
@@ -35,27 +37,33 @@
         },
         {
             "name": "e_ehsize",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         },
         {
             "name": "e_phentsize",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         },
         {
             "name": "e_phnum",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         },
         {
             "name": "e_shentsize",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         },
         {
             "name": "e_shnum",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         },
         {
             "name": "e_shstrndx",
-            "size": 4
+            "size": 4,
+            "type": "uint32"
         }
     ]
 }

@@ -123,3 +123,101 @@ Elf32_Ehdr at 0 in test.o
 ├─0x3c 0x3c: e_shnum 04109de5 ....
 └─0x40 0x40: e_shstrndx 010080e0 ....
 ```
+
+If you want to get more readable information,add a field `type` in json:
+
+```json
+{
+    "name": "Elf32_Ehdr",
+    "fields": [
+        {
+            "name": "e_ident",
+            "size": 16
+        },
+        {
+            "name": "e_type",
+            "size": 4
+        },
+        {
+            "name": "e_machine",
+            "size": 4
+        },
+        {
+            "name": "e_version",
+            "size": 4
+        },
+        {
+            "name": "e_entry",
+            "size": 4
+        },
+        {
+            "name": "e_phoff",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "e_shoff",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "e_flags",
+            "size": 4
+        },
+        {
+            "name": "e_ehsize",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "e_phentsize",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "e_phnum",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "e_shentsize",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "e_shnum",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "e_shstrndx",
+            "size": 4,
+            "type": "uint32"
+        }
+    ]
+}
+```
+
+And then the value will be parsed whos `type` is specified(add option `-e` to specify the endian.):
+
+```json
+binparse.py -o 0 -s ~/.binparse/structs/Elf32_Ehdr.json -e little core
+Elf32_Ehdr at 0x0 in core
+├─0x0 0x0: e_ident: 7f454c46020101000000000000000000 => .ELF............
+├─0x10 0x10: e_type: 04003e00 => ..>.
+├─0x14 0x14: e_machine: 01000000 => ....
+├─0x18 0x18: e_version: 00000000 => ....
+├─0x1c 0x1c: e_entry: 00000000 => ....
+├─0x20 0x20: e_phoff: 40000000 ==> 64
+├─0x24 0x24: e_shoff: 00000000 ==> 0
+├─0x28 0x28: e_flags: 00000000 => ....
+├─0x2c 0x2c: e_ehsize: 00000000 ==> 0
+├─0x30 0x30: e_phentsize: 00000000 ==> 0
+├─0x34 0x34: e_phnum: 40003800 ==> 3670080
+├─0x38 0x38: e_shentsize: 18000000 ==> 24
+├─0x3c 0x3c: e_shnum: 00000000 ==> 0
+└─0x40 0x40: e_shstrndx: 04000000 ==> 4
+```
+
+- The `=>` means convert to ascii if possible.
+- The `==>` means convert to type user specified in json.

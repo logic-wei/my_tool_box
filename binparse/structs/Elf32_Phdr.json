@@ -1,0 +1,33 @@
+{
+    "name": "Elf32_Phdr",
+    "fields": [
+        {
+            "name": "p_type",
+            "size": 4
+        },
+        {
+            "name": "p_offset",
+            "size": 4
+        },
+        {
+            "name": "p_vaddr",
+            "size": 4
+        },
+        {
+            "name": "p_files",
+            "size": 4
+        },
+        {
+            "name": "p_memsz",
+            "size": 4
+        },
+        {
+            "name": "p_flags",
+            "size": 4
+        },
+        {
+            "name": "p_align",
+            "size": 4
+        }
+    ]
+}
