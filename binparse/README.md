@@ -221,3 +221,14 @@ Elf32_Ehdr at 0x0 in core
 
 - The `=>` means convert to ascii if possible.
 - The `==>` means convert to type user specified in json.
+
+Here are the supported types:
+- "int8"
+- "int16"
+- "int32"
+- "int64"
+- "uint8"
+- "uint16"
+- "uint32"
+- "uint64"
+- "ascii"
