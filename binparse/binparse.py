@@ -44,7 +44,7 @@ def bytes_unpack(bytes, type, size, endian):
 
     if type == "ascii":
         data = struct.unpack(fmt, bytes)
-        return data[0].decode("ascii", size)
+        return data[0].decode("ascii")
     else:
         data = struct.unpack(fmt, bytes)
         return str(data[0])

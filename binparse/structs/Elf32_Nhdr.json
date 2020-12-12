@@ -1,0 +1,22 @@
+{
+    "name": "Elf32_Nhdr",
+    "fields": [
+        {
+            "name": "n_namesz",
+            "size": 4
+        },
+        {
+            "name": "n_descsz",
+            "size": 4
+        },
+        {
+            "name": "n_type",
+            "size": 4
+        },
+        {
+            "name": "n_name",
+            "size": 5,
+            "type": "ascii"
+        }
+    ]
+}
