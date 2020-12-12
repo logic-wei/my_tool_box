@@ -1,0 +1,64 @@
+{
+    "name": "elf_prpsinfo",
+    "fields": [
+        {
+            "name": "pr_state",
+            "size": 1
+        },
+        {
+            "name": "pr_sname",
+            "size": 1
+        },
+        {
+            "name": "pr_zomb",
+            "size": 1
+        },
+        {
+            "name": "pr_nice",
+            "size": 1
+        },
+        {
+            "name": "pr_flag",
+            "size": 4
+        },
+        {
+            "name": "pr_uid",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "pr_gid",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "pr_pid",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_ppid",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_pgrp",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_sid",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_fname",
+            "size": 16,
+            "type": "ascii"
+        },
+        {
+            "name": "pr_fname",
+            "size": 80
+        }
+    ]
+}

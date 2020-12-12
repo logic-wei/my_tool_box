@@ -1,0 +1,171 @@
+{
+    "name": "prstatus",
+    "fields": [
+        {
+            "name": "si_signo",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "si_code",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "si_errno",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_cursig",
+            "size": 2,
+            "type": "int16"
+        },
+        {
+            "name": "pad",
+            "size": 2
+        },
+        {
+            "name": "pr_sigpend",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "pr_sighold",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "pr_pid",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_ppid",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_pgrp",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_sid",
+            "size": 4,
+            "type": "int32"
+        },
+        {
+            "name": "pr_utime",
+            "size": 8,
+            "type": "uint32"
+        },
+        {
+            "name": "pr_stime",
+            "size": 8
+        },
+        {
+            "name": "pr_cutime",
+            "size": 8
+        },
+        {
+            "name": "pr_cstime",
+            "size": 8
+        },
+        {
+            "name": "ARM_r0",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r1",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r2",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r3",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r4",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r5",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r6",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r7",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r8",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r9",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_r10",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_fp",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_ip",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_sp",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_lr",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_pc",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_cpsr",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "ARM_ORIG_r0",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
+            "name": "pr_fpvalid",
+            "size": 4,
+            "type": "uint32"
+        }
+    ]
+}
