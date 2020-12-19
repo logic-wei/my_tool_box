@@ -16,6 +16,11 @@
             "type": "uint32"
         },
         {
+            "name": "p_paddr",
+            "size": 4,
+            "type": "uint32"
+        },
+        {
             "name": "p_filesz",
             "size": 4,
             "type": "uint32"
