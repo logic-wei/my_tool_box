@@ -34,6 +34,8 @@ make -j
 2. Load core with gdb.
 
 ```bash
-arm-linux-gnueabe-gdb [exe.elf] core
+arm-linux-gnueabi-gdb [exe.elf] core
 ```
 
+## Log format
+[sample log](samples/log.txt)
