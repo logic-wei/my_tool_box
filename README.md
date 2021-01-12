@@ -9,3 +9,4 @@ iName | Description
 [android_log_analyzer](./android_log_analyzer/README.md)|Analyze logs and generate a reporte
 [ndk-stack-asan](./ndk_stack_asan/README.md)|Add ASan support for Android ndk-stack
 [binparse](./binparse/README.md)|Highly customizable tool for analyzing binary file
+[gencore](./gencore/README.md)|Coredump generator designed for RTOS
